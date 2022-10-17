@@ -1,13 +1,13 @@
 public class Main {
 
-    private static final Employee[] employees = new Employee[10];
+    private static final Employee[] EMPLOYEES = new Employee[10];
 
     public static void main(String[] args) {
-        employees[0] = new Employee("Иванов И.И.",1,50_475);
-        employees[1] = new Employee("Петров П.П.",2,21_369);
-        employees[2] = new Employee("Сидоров С.С.",3,76_582);
-        employees[3] = new Employee("Козлов К.К.",4,46_672);
-        employees[4] = new Employee("Морозов М.М.",5,86_015);
+        EMPLOYEES[0] = new Employee("Иванов И.И.",1,50_475);
+        EMPLOYEES[1] = new Employee("Петров П.П.",2,21_369);
+        EMPLOYEES[2] = new Employee("Сидоров С.С.",3,76_582);
+        EMPLOYEES[3] = new Employee("Козлов К.К.",4,46_672);
+        EMPLOYEES[4] = new Employee("Морозов М.М.",5,86_015);
 
         System.out.println("Курсовая работа. Книга сотрудников - Базовая сложность.");
         printSeparator();
@@ -39,7 +39,7 @@ public class Main {
         printSeparator();
 
         // Среднее значение зарплат
-        System.out.println("Среднее значение зарплат = " + calculateAverSalary());
+        System.out.printf("Среднее значение зарплат = %.2f \n", calculateAverSalary());
         printSeparator();
 
         // ФИО всех сотрудников
@@ -48,14 +48,14 @@ public class Main {
     }
 
     // Сепаратор
-    public static void printSeparator() {
+    private static void printSeparator() {
         System.out.println("-----------------------------------------------------------");
     }
 
     // Список всех сотрудников со всеми имеющимися по ним данными
-    public static void printAllEmployees() {
+    private static void printAllEmployees() {
         System.out.println("Список всех сотрудников со всеми имеющимися по ним данными:");
-        for (Employee employee : employees) {
+        for (Employee employee : EMPLOYEES) {
             if (employee != null) {
                 System.out.println(employee.toString());
             }
@@ -63,9 +63,9 @@ public class Main {
     }
 
     // Сумма всех затрат на зарплаты
-    public static int calculateSumSalary() {
+    private static int calculateSumSalary() {
         int sumSalary = 0;
-        for (Employee employee : employees) {
+        for (Employee employee : EMPLOYEES) {
             if (employee != null) {
                 sumSalary += employee.getSalary();
             }
@@ -74,10 +74,10 @@ public class Main {
     }
 
     // Сотрудник с минимальной зарплатой
-    public static Employee getSalaryMin() {
+    private static Employee getSalaryMin() {
         int min = Integer.MAX_VALUE;
         Employee employeesMin = null;
-        for (Employee employee : employees) {
+        for (Employee employee : EMPLOYEES) {
             if (employee != null && employee.getSalary() < min) {
                 min = employee.getSalary();
                 employeesMin = employee;
@@ -87,10 +87,10 @@ public class Main {
     }
 
     // Сотрудник с максимальной зарплатой
-    public static Employee getSalaryMax() {
+    private static Employee getSalaryMax() {
         int max = Integer.MIN_VALUE;
         Employee employeesMax = null;
-        for (Employee employee : employees) {
+        for (Employee employee : EMPLOYEES) {
             if (employee != null && employee.getSalary() > max) {
                 max = employee.getSalary();
                 employeesMax = employee;
@@ -100,23 +100,23 @@ public class Main {
     }
 
     // Среднее значение зарплат
-    public static int calculateAverSalary() {
+    private static double calculateAverSalary() {
 
-        int averSalary = 0;
+        double averSalary = 0;
         int index = 0;
-        for (Employee employee : employees) {
+        for (Employee employee : EMPLOYEES) {
             if (employee != null) {
                 index++;
             }
         }
-        averSalary = calculateSumSalary() / index;
+        averSalary = (double) calculateSumSalary() / index;
         return averSalary;
     }
 
     // ФИО всех сотрудников
-    public static void printEmployeesNames() {
+    private static void printEmployeesNames() {
         System.out.println("ФИО сотрудников:");
-        for (Employee employee : employees) {
+        for (Employee employee : EMPLOYEES) {
             if (employee != null) {
                 System.out.println(employee.getFullName());
             }
